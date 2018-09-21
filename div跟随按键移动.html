@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box6{
+				width: 100px;
+				height: 100px;
+				border: 1px solid black;
+				position: absolute;
+			}
+			*{
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+		<script>
+			window.onload = function  () {
+				var box6 = document.getElementById("box6");
+				var dir = 0;
+				var timer = setInterval(function  () {
+					var x = box6.offsetLeft;
+					var y = box6.offsetTop;
+					var speed = 10;
+					var st = document.body.scrollTop || document.documentElement.scrollTop;
+					var sl = document.body.scrollLeft || document.documentElement.scrollLeft;	
+						switch (dir){
+							case 37:	//向左移动
+								if(x >0){
+									x -= speed;
+									box6.style.left = x+"px";
+									box6.innerHTML = "</br>"+"x="+x+",y="+y;	
+								}
+							
+								break;
+							case 38:	//向上移动
+								if(y >0){
+									y -= speed;
+									box6.style.top = y+"px";
+									box6.innerHTML = "</br>"+"x="+x+",y="+y;
+								}
+								
+								break;
+							case 39:	//向右移动
+								x += speed;
+								box6.style.left = x+"px";
+								box6.innerHTML = "</br>"+"x="+x+",y="+y;	
+								
+								break;
+							case 40:	//向下移动
+								y += speed;
+								box6.style.top = y+"px";
+								box6.innerHTML = "</br>"+"x="+x+",y="+y;
+							
+								break;
+							default:
+								break;
+						}
+				},10);
+				
+				document.onkeyup = function  (event) {
+					event = event || window.event;
+					dir = 0;
+				}
+				
+				document.onkeydown = function  (event) {
+					event = event || window.event;
+					console.log(event.keyCode);
+					
+					//上38，右39，下40，左37
+					dir = event.keyCode;
+					//clearInterval(timer);
+//					box6.style.left = (x+sl)+"px";
+//					box6.innerHTML = "</br>"+"x="+x+",y="+y;
+				};
+			};
+		</script>
+	</head>
+	<body >
+		<div id="box6_1" style="width: 500px;height: 500px;border: 1px solid black;position: absolute;overflow: auto">
+			<div id="box6"></div>
+			
+		</div>
+		
+	</body>
+</html>
