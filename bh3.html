@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>《崩坏3》官方网站 - 为世界上所有的美好而战</title>
+		<script src="jquery.js"></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.nav{
+				//border: 1px solid black;
+				width: 100%;
+				height: 611px;
+				min-width:1333px;
+				//overflow: hidden;
+				background: url(img/BH3BG2.png);
+				background: auto 100%;
+				z-index: 1000;
+				
+			}
+			/*.nav:after{
+				content: "";
+				display: block;
+				clear: both;
+			}*/
+			.nav-btn {
+				background:  rgba(0,0,0,0.25);
+				display:inline-block;
+				width: 100px;
+				height: 50px;
+				border: 2px solid #00c3ff;
+				border-radius: 10px;
+				transform:skew(-10deg);
+				text-align: center;
+				font-size: 18px;
+				color: white;
+				margin: 0px 5px;
+				padding: 0 4px;
+				transition: 0.3s;
+			}
+			.nav-btn:hover{
+				border: 2px solid #ffc300;
+			}
+			.nav-btn p{
+				margin-top: 12px;
+			}
+			.active{
+				background-color: #00c3ff;
+				display: inline-block;
+				width: 100px;
+				height: 50px;
+				border: 2px solid #00c3ff;
+				border-radius: 10px;
+				transform:skew(-10deg);
+				font-size: 18px;
+				text-align: center;
+				margin: 0px 5px;
+				transition: 0.3s;
+				color: #000000;
+				padding: 0 4px;
+				
+			}
+			.active:hover{
+				border: 2px solid #ffc300;
+			}
+			.active p{
+				margin-top: 12px;
+			}
+			.head li{
+				float: left;
+				 
+			}
+			.head{
+				//border: 1px solid black;
+				width: 50%;
+				min-width: 700px;
+				list-style: none;
+				position: fixed;
+				left:380px;	
+				top: 16px;
+				overflow: hidden;
+				z-index: 2;
+			}
+			#float{
+				width: 100%;
+				height: 400px;
+				border: 1px solid black;
+				background:url(BH3Donload.png) ;
+				position: fixed;
+				bottom: 0;
+				z-index: 2;
+			}
+			.vrkry{
+				width: 130px;
+				height: 135px;
+				border: 3px solid white;
+				transform: skew(-10deg);
+				border-radius: 10px;
+				display: inline-block;
+				margin: 5px;
+				background-size: auto 100%; 
+				background-position: center;
+				overflow: hidden;
+				transition: 0.3s;
+			}
+			.vrkry:hover{
+				border: 3px solid #ffc300;
+			}
+			.vrkry img{
+				position: relative;
+				left: -18%;
+				background-position:center;
+				transform: rotate(-1deg);
+			}
+			table{
+				margin: 0 auto;
+				z-index: 1;
+				position: relative;
+			}
+			#section1{
+				width: auto;
+				height: 1200px;
+				background-color: rgb(0,195,255);
+			}
+			#section2{
+				width: auto;
+				height: 636px;
+				background: url(img/section_2_bg.jpg);
+				background-size: auto 100%;
+			}
+			#innerSection{
+				width: 1013px;
+				height: 320px;
+				//border: 2px solid white;
+				background: rgba(0,0,0,0.25);
+				margin: 0 auto;
+				position: relative;
+				top: 130px;
+				
+			}
+			#section2_left{
+				width: 43%;
+				height: 100%;
+				//background: rgba(0,0,0,0.25);
+				//border: 1px solid red;
+				float: left;
+				//overflow: hidden;
+			}
+			#section2_right{
+				width: 51%;
+				height: 100%;
+				//background: rgba(0,0,0,0.25);
+				//border: 1px solid red;
+				float: right;
+				//overflow: hidden;
+			}
+			#ulHeader li{
+				width: 17%;
+				float: left;
+				font-size: 20px;
+				text-align: center;
+				color: white;
+				list-style: none;
+				cursor: pointer;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				//border: 1px solid black;
+			}
+			
+			#new{
+				height: 33px;
+				background: rgb(62,73,99);
+				border-bottom: 2px solid skyblue;
+				color: skyblue;
+			}
+			
+			
+			#ulFooter{
+				height: 15%;
+				list-style: none;
+				letter-spacing: 1px;
+				font-size: 16px;
+			}
+			#ulFooter li{
+				margin: 17px auto;
+			}
+			#ulFooter li a{
+				color: white;
+				text-decoration: none;
+			}
+			
+			#section3{
+				width: 1049px;	
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			#lb{
+				//border: 1px solid white;
+				overflow: hidden;
+				height: 300px;
+			}
+			#lb li{
+				list-style: none;
+				float: left;
+				position: relative;
+				left: 20px;
+				top: 130px;
+			}
+			#lb li:hover{
+				opacity: 0.8;
+			}
+			#chapter1{
+				width: 296px;
+				height: 296px;
+				border-radius: 14px;
+				background-color: white;
+				display: none;
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+				z-index: 1;
+			}
+			#chapter2{
+				width: 280px;
+				height: 170px;
+				border-radius: 10px;
+				background-color: white;
+				display: none;
+				position: absolute;
+				bottom: 0px;
+				left: 205px;
+				z-index: 1;
+			}
+			#chapter3{
+				width: 230px;
+				height: 230px;
+				border-radius: 10px;
+				background-color: white;
+				display: none;
+				position: absolute;
+				bottom: 0px;
+				left: 405px;
+				z-index: 1;
+			}
+			#chapter4{
+				width: 340px;
+				height: 280px;
+				border-radius: 10px;
+				background-color: white;
+				display: none;
+				position: absolute;
+				bottom: 0px;
+				left: 605px;
+				z-index: 1;
+			}
+			#chapter5{
+				width: 250px;
+				height: 200px;
+				border-radius: 10px;
+				background-color: white;
+				display: none;
+				position: absolute;
+				bottom: 0px;
+				left: 762px;
+				z-index: 1;
+			}
+		</style>
+		<script>
+			window.onload = function  () {
+			//	var float1 = document.getElementsByClassName("float")[0;
+				var img2 = document.getElementById("img2");
+				var src_Array = ["img/num1.png","img/num2.png","img/num3.png"];
+				var idx = 0;
+				var ulHeader = document.getElementById("ulHeader");
+				var li = ulHeader.children;
+				var ulFooter = document.getElementById("ulFooter");
+				var imgPre = document.getElementById("pre");
+				var imgNext =document.getElementById("next");
+				
+				imgPre.onclick = function  () {
+					idx--;
+					if(idx < 0){
+						idx = src_Array.length - 1;
+					}	
+					img2.src = src_Array[idx];
+				}
+				
+				imgNext.onclick = function(){
+					idx++;
+					if(idx > src_Array.length - 1)
+					{
+						idx = 0;
+					}
+					img2.src = src_Array[idx];
+				};
+				
+//				float1.onclick = function () {
+//						float1.style.display = "none";
+//				};
+				
+				
+				$("#float").click(function  () {
+					$(this).fadeOut();
+				});
+				
+				setInterval(function  () {
+					idx++;
+					if(idx > src_Array.length - 1)
+					{
+						idx = 0;
+					}
+					img2.src = src_Array[idx];
+				},3000);
+				
+				function changeStyle (obj,num) {
+					for (var i = 0 ; i < li.length ; i++) {
+						if(i == num){
+							obj.style.height = "33px";
+							obj.style.backgroundColor = "rgb(62,73,99)";
+							obj.style.borderBottom = "2px solid skyblue";
+							obj.style.color = "skyblue";
+						}else{
+							li[i].style.color = "white !important";
+							li[i].style.backgroundColor = "inherit";
+							li[i].style.height = "35px";
+							li[i].style.borderBottom = "0px solid skyblue";
+						}
+					}
+				};
+				
+				function changeContent (element,num) {
+					switch (num){
+						case 0:
+							element.innerHTML = "<li><a href='conducting.html' target='_blank'>「新闻」 黑暗中的狩猎者——「原罪猎人」 ...</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「新闻」 [重燃初梦]&nbsp;初始女武神SS升阶计 ...</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「新闻」 [米哈游通行证]全新上线! </a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「攻略」 爱酱的英魂殿 | &nbsp;「佐罗」</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「重燃」 2.6版本更新公告</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「攻略」 爱酱的军械库 | 「血手圣徒」</a></li>";
+							break;
+						case 1:
+							element.innerHTML = "<li><a href='conducting.html' target='_blank'>「新闻」紧急作战：崩坏能泄漏！</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「新闻」 周年庆典即将开启 女武神献上祝福！</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「新闻」精准目标：血手圣徒、幽色咏叹调、佐罗 </a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「新闻」扩充补给目标：原罪猎人、第六夜想曲</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「新闻」舰团战beta限时开放！</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「新闻」黑暗中的狩猎者——「原罪猎人」训练室开启</a></li>";
+							break;
+						case 2:
+							element.innerHTML = "<li><a href='conducting.html' target='_blank'>「公告」补给概率与补给结果公示</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「公告」【重燃】2.6版本更新公告</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「公告」9月13日版本更新维护通知 </a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「公告」9月7日使用外挂封禁名单</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「公告」8月29日使用外挂封禁名单</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「公告」8月23日使用外挂封禁名单</a></li>";
+							break;
+						case 3:
+							element.innerHTML = "<li><a href='conducting.html' target='_blank'>「活动」新手福利加码 冲级就送八重樱</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「活动」 考试祭 | 迦尼萨的再袭</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「活动」圣诞小镇系列任务活动预告</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「活动」预登陆奖励确认中</a></li>";
+							break;
+						case 4:
+							element.innerHTML = "<li><a href='conducting.html' target='_blank'>「攻略」爱酱的英魂殿 | 「佐罗」</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「攻略」爱酱的军械库 | 「血手圣徒」</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「攻略」爱酱的军械库 | 「赫朗格尼尔」 </a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「攻略」爱酱的军械库 | 「空无之钥」</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「攻略」爱酱的英魂殿 | 「西琳·升华」</a></li>";
+							element.innerHTML +="<li><a href='conducting.html' target='_blank'>「攻略」爱酱的英魂殿 | 「叶采章」</a></li>";
+							break;
+						default:
+							break;
+					}
+				};
+				
+				function liEvent (element,num) {
+					element.onmousemove = function  () {
+						this.style.color = "skyblue";
+						element.onmouseleave = function  () {
+							this.style.color = "white";
+							//element.onmouseleave = null;
+						};
+						element.onclick = function  () {
+							element.onmouseleave = null;
+							changeStyle(this,num);
+							changeContent(ulFooter,num);
+						};
+					};	
+				};
+				liEvent(li[0],0);
+				liEvent(li[1],1);
+				liEvent(li[2],2);
+				liEvent(li[3],3);
+				liEvent(li[4],4);
+				
+				var lb = document.getElementById("lb");
+				
+				$("#li_1").click(function  () {
+					$("#chapter1").siblings().fadeOut();
+					$("#chapter1").fadeToggle();
+				});
+				$("#li_2").click(function  () {
+					$("#chapter2").siblings().fadeOut();
+					$("#chapter2").fadeToggle();
+				});
+				$("#li_3").click(function  () {
+					$("#chapter3").siblings().fadeOut();
+					$("#chapter3").fadeToggle();
+				});
+				$("#li_4").click(function  () {
+					$("#chapter4").siblings().fadeOut();
+					$("#chapter4").fadeToggle();
+				});
+				$("#li_5").click(function  () {
+					$("#chapter5").siblings().fadeOut();
+					$("#chapter5").fadeToggle();
+				});
+			};
+		</script>
+	</head>
+	<body style="background-color: blue;min-width: 1330px;">
+		<div>
+		<div class="nav">
+			<ul class="head">
+				<li>
+					<a href="bh3.html">
+					<span class="active"><p>首页</p></span>
+					</a>
+				</li>
+				<li>
+					<a href="conducting.html" target="_blank">
+						<span class="nav-btn"><p>作战资讯</p></span>
+					</a>
+				</li>
+				<li>
+					<a href="conducting.html" target="_blank">
+						<span class="nav-btn"><p>角色介绍</p></span>
+					</a>
+				</li>
+				<li>
+					<a href="conducting.html" target="_blank">
+						<span class="nav-btn"><p>游戏特色</p></span>
+					</a>
+				</li>
+				<li>
+					<a href="conducting.html" target="_blank">
+						<span class="nav-btn"><p>壁纸下载</p></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="float"></div>
+		<section id="section1">
+
+			<table>
+				<tr>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/kiana_c1.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/kiana_c2.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/kiana_c3.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/kiana_c4.png" /></a></td>
+				</tr>
+				<tr>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/mei_c1.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/mei_c2.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/mei_c3.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/mei_c4.png" /></a></td>
+				</tr>
+				<tr>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/bronya_c1.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/bronya_c2.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/bronya_c3.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/bronya_c4.png" /></a></td>
+				</tr>
+				<tr>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/himeko_c1.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/himeko_c2.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/himeko_c3.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/himeko_c4.png" /></a></td>
+				</tr>
+				<tr>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/sakura_c1.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/sakura_c2.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/sakura_c3.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/theresa_c1.png" /></a></td>
+				</tr>
+				<tr>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/theresa_c2.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/theresa_c3.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/theresa_c4.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/bronya_c5.png" /></a></td>
+				</tr>
+				<tr>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/bronya_c6.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/kallen_c2.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/fuka_c1.png" /></a></td>
+					<td><a href="conducting.html" class="vrkry" target="_blank"><img src="img/fuka_c2.png" /></a></td>
+				</tr>
+			</table>
+		</section>
+		
+		<section id="section2">
+			<div id="innerSection">
+				<div id="section2_left">
+					<img id="pre" style="position: absolute;top: 45%;cursor: pointer;" src="img/left.png" />
+					<img id="img2" src="img/num1.png" />
+					<img id="next" style="position: absolute;left: 44.7%;top: 45%;cursor: pointer;" src="img/right.png" />
+				</div>
+				<div id="section2_right">
+					<ul id="ulHeader">
+						<li id="new"><a>最新</a></li>
+						<li><a>新闻</a></li>
+						<li><a>公告</a></li>
+						<li><a>活动</a></li>
+						<li><a>攻略</a></li>
+					</ul>
+					<hr color="skyblue" size="1" style="clear: both;"/>
+					<ul id="ulFooter">
+						<li><a href="conducting.html">「新闻」 黑暗中的狩猎者——「原罪猎人」 ...</a></li>
+						<li><a href="conducting.html">「新闻」 [重燃初梦]&nbsp;初始女武神SS升阶计 ...</a></li>
+						<li><a href="conducting.html">「新闻」 [米哈游通行证]全新上线! </a></li>
+						<li><a href="conducting.html">「攻略」 爱酱的英魂殿 | &nbsp;「佐罗」</a></li>
+						<li><a href="conducting.html">「重燃」 2.6版本更新公告</a></li>
+						<li><a href="conducting.html">「攻略」 爱酱的军械库 | 「血手圣徒」</a></li>
+					</ul>
+				</div>
+				<div>
+					<div id="chapter1" style="text-align: center;">
+						<div style="margin-top: 50px;margin-bottom: 20px;font-size: 18px;"><img src="img/arrowRight.png" />官方客服电话</div>
+						<div style="margin-bottom: 10px;">021-34203305</div>
+						<div style="font-size: 13px;margin-bottom: 30px;">工作时间：每天10点 - 20点</div>
+						<div style="font-size: 18px;">
+							<img src="img/arrowRight.png" />勾搭客服娘
+							<br />
+							QQ:800189596
+						</div>
+						<div style="margin-top: 20px;font-size: 13px;">
+							E-mail：bh3kefu@mihoyo.com
+						</div>
+					</div>
+					<div id="chapter2" style="text-align: center;">
+						<a href="conducting.html" target="_blank"><img src="img/tieba.png" style="margin-top: 20px;" /></a>
+						
+						<div style="margin-top: 30px;font-size: 18px;">
+							<img src="img/arrowRight.png" />官方贴吧
+						</div>
+					</div>
+					<div id="chapter3" style="text-align: center;">
+						<img src="img/weixin_code.png" style="width: 150px;margin-top: 10px;" />
+						<div style="margin-top: 10px;font-size: 18px;"><img src="img/arrowRight.png" />崩坏三官方微信</div>
+					</div>
+					<div id="chapter4" style="text-align: center;">
+						<p style="font-size: 18px;margin-top: 40px;">
+						   142742077	崩坏3官方⑥群<br />
+						   419960123	崩坏3官方⑧群<br />
+						   105321316	崩坏3官方⑨群<br />
+						   586442980	崩坏3官方⑩群<br />
+						   238420557	崩坏3官方⑪群<br />
+						   		（推荐）
+						</p>
+						<div style="font-size: 18px;margin-top: 30px;"><img src="img/arrowRight.png" />官方QQ群</div>
+					</div>
+					<div id="chapter5" style="text-align: center;">
+						<a href="conducting.html" target="_blank"><img src="img/kianaWeibo.png" style="margin-top: 45px;margin-left: 40px;cursor: pointer;" /></a>
+						
+						<span style="position: relative;top: -38px;margin-left: 8px;">
+							<a href="conducting.html" target="_blank" style="color: blue;font-size: 13px;">崩坏3</a>
+							<span style="color: blue;font-weight: 1000;margin-left: 2px;">V</span>
+							<span style="color: #CCCCCC;font-size: x-small;margin-left: 3px;">上海</span>
+						</span>
+						<span style="background-color: red;border-radius:3px ;padding: 4px 6px;font-size: 13px;position: absolute;left: 130px;top: 70px;cursor: pointer;">
+							<a href="conducting.html" target="_blank" style="color: whitesmoke;text-decoration: none;">+加关注</a>
+						</span>
+						<p style="margin-top: 40px;"><img src="img/arrowRight.png" style="font-size: 18px;" />崩坏三官方微博</p>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div id="section3">
+				<ul id="lb" >
+					
+					<li id="li_1" style="position: relative;"><img src="img/lb_1_1.png" /></li>
+					
+					<li id="li_2" style="position: relative;"><img src="img/lb_2_1.png" /></li>
+						
+					<li id="li_3" style="position: relative;left: -4px;"><img src="img/lb_3_1.png" /></li>
+					
+					<li id="li_4" style="position: relative;left: -5px;"><img src="img/lb_4_1.png" /></li>
+					
+					<li id="li_5" style="position: relative;left: -14px;"><img src="img/lb_5_1.png" /></li>
+				</ul>
+			</div>
+		</section>
+		</div>
+	</body>
+</html>
