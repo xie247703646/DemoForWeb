@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.nav{
+				  border: 1px black solid;				
+				  width:100%;
+				  min-width:1024px;
+				  z-index:1000;
+				  font-size: 18px;
+				  overflow: hidden;
+			}
+			.nav-btn {
+				/*background-color: rgb(0,10,230);
+				display: inline-block;
+				width: 100px;
+				height: 50px;
+				border: 2px solid lightskyblue;
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 20px;
+				border-bottom-left-radius: 10px;
+				border-top-left-radius: 20px;
+				text-align: center;
+				font-size: 18px;
+				color: white;
+				margin: 0px 5px;*/
+				background:  rgba(0,0,0,0.25);
+				display:inline-block;
+				width: 100px;
+				height: 50px;
+				border: 2px solid #00c3ff;
+				border-radius: 10px;
+				transform:skew(-10deg);
+				text-align: center;
+				font-size: 18px;
+				color: white;
+				margin: 0px 5px;
+				padding: 0 4px;
+				transition: 0.3s;
+			}
+			.nav-btn:hover{
+				border: 2px solid #ffc300;
+			}
+			.nav-btn p{
+				margin-top: 12px;
+			}
+			
+			.active:hover{
+				border: 2px solid #ffc300;
+			}
+			.active p{
+				margin-top: 12px;
+			}
+			.active{
+				/*background-color: aqua;
+				display: inline-block;
+				width: 100px;
+				height: 50px;
+			
+				border: 2px solid lightskyblue;
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 20px;
+				border-bottom-left-radius: 10px;
+				border-top-left-radius: 20px;
+				font-size: 18px;
+				text-align: center;*/
+				background-color: #00c3ff;
+				display: inline-block;
+				width: 100px;
+				height: 50px;
+				border: 2px solid #00c3ff;
+				border-radius: 10px;
+				transform:skew(-10deg);
+				font-size: 18px;
+				text-align: center;
+				margin: 0px 5px;
+				transition: 0.3s;
+				color: #000000;
+				padding: 0 4px;
+			}
+			.active p{
+				margin-top: 12px;
+			}
+			.nav-wrap li{
+				float: left;
+				
+			}
+			.nav-wrap{
+				list-style: none;
+				//position:relative;
+				width: 960px;
+				margin:0 auto;
+				text-align: center;
+				//white-space: nowrap;
+				/*position: fixed;
+				left: 300px;*/
+			}
+		</style>
+	</head>
+	<body style="background-color: blue;">
+		<div class="nav">
+			<ul class="nav-wrap">
+				<li>
+					<a href="">
+					<span class="active"><p>首页</p></span>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<span class="nav-btn"><p>作战资讯</p></span>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<span class="nav-btn"><p>角色介绍</p></span>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<span class="nav-btn"><p>游戏特色</p></span>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<span class="nav-btn"><p>壁纸下载</p></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
