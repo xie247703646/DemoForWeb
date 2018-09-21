@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>2048</title>
+		<style type="text/css">
+			*{
+				overflow: hidden;
+			}
+			#mainFace{
+				width: 400px;
+				height: 400px;
+				border: 1px solid black;
+				margin: 100px auto;
+				border-radius: 10px;
+				//float: left;
+				position: absolute;
+				left: 470px;
+			}
+			.box{
+				width: 96px;
+				height: 96px;
+				border: 1px solid red;
+				margin: 1px;
+				float: left;
+				font-size: 30px;
+				text-align: center;
+				border-radius: 10px;
+			}
+			span{
+				font-size: 40px;
+				color: white;
+			}
+			header{
+				font-size: 80px;
+				text-align: center;
+				position: relative;
+				top: 50px;
+			}
+			#left{
+				width: 300px;
+				height: 500px;
+				border: 1px solid black;
+				float: left;
+			}
+			#right{
+				width: 300px;
+				height: 500px;
+				border: 1px solid black;
+				float: right;
+			}
+			#main1{
+				min-width: 1324px;
+				border: 1px solid black;
+				overflow: hidden;
+				text-align: center;
+				background-color: #CCCCCC;
+			}
+			#start{
+				background-color: #00c3ff;
+				display: inline-block;
+				width: 100px;
+				height: 40px;
+				border: 2px solid #00c3ff;
+				border-radius: 10px;
+				transform:skew(-10deg);
+				font-size: 18px;
+				text-align: center;
+				margin: 4px 5px;
+				transition: 0.3s;
+				color: white;
+				padding: 0 4px;
+				cursor: pointer;
+			}
+			#start:hover{
+				border: 2px solid #ffc300;
+			}
+			#refresh{
+				background-color: #00c3ff;
+				display: inline-block;
+				width: 100px;
+				height: 40px;
+				border: 2px solid #00c3ff;
+				border-radius: 10px;
+				transform:skew(-10deg);
+				font-size: 18px;
+				text-align: center;
+				margin: 4px 5px;
+				transition: 0.3s;
+				color: white;
+				padding: 0 4px;	
+				cursor: pointer;
+			}
+			#refresh:hover{
+				border: 2px solid #ffc300;
+			}
+		</style>
+		<script>
+			window.onload = function  () {
+				var box = document.getElementsByClassName("box");
+				var boxData = new Array(16);
+				var score = 0;
+				//游戏初始化
+				function boxDataInit (className,ArrayData) {
+					for (var i = 0; i < boxData.length ; i++) {
+						ArrayData[i] = 0;
+						var num = document.createTextNode(ArrayData[i]);
+						var span1 = document.createElement("span");
+						span1.appendChild(num);
+						className[i].appendChild(span1);
+//						var count = document.createTextNode("["+i+"]");
+//						var span2 = document.createElement("span");
+//						span2.appendChild(count);
+//						className[i].appendChild(span2);
+					}
+					Random(box,boxData);
+				};
+				
+				//随机出现数字
+				function Random (className,ArrayData) {
+					var random = 0;
+					var count = 0;
+					for (var i = 0; i < boxData.length ; i++) {
+						if(count < 2){
+							random = Math.ceil(Math.random()*15);
+							ArrayData[random] = 2;
+							className[random].children[0].innerHTML = 2;
+							count++;					
+						}
+					}
+				};
+				
+				//判断游戏是否结束
+				function gameOver (className,ArrayData) {
+					for (var i = 0; i < ArrayData.length ; i++) {
+						if (ArrayData[i] == 2048) {
+							alert("恭喜你！");
+							document.onkeydown = null;
+						} 
+					}
+				}
+				
+				//各个数字的颜色
+				function bgcolor (className,ArrayData) {
+					for (var i = 0; i < ArrayData.length ; i++) {
+						switch (ArrayData[i]){
+							case 0:
+								className[i].style.backgroundColor = "#D0D063";
+								break;
+							case 2:
+								className[i].style.backgroundColor = "#4EC6E4";
+								break;
+							case 4:
+								className[i].style.backgroundColor = "greenyellow";
+								break;
+							case 8:
+								className[i].style.backgroundColor = "blue";
+								break;
+							case 16:
+								className[i].style.backgroundColor = "blueviolet";
+								break;
+							case 32:
+								className[i].style.backgroundColor = "#F1AB41";
+								break;
+							case 64:
+								className[i].style.backgroundColor = "#EE9A00";
+								break;
+							case 128:
+								className[i].style.backgroundColor = "#CD3700";
+								break;
+							case 256:
+								className[i].style.backgroundColor = "#FF1493";
+								break;
+							case 512:
+								className[i].style.backgroundColor = "#8B8989";
+								break;
+							case 1024:
+								className[i].style.backgroundColor = "silver";
+								break;
+							case 2048:
+								className[i].style.backgroundColor = "darkslategray";
+								break;
+							default:
+								break;
+						}
+					}
+				};
+				
+				//获取分数
+				function getScores (ArrayData,index) {
+					score += ArrayData[index]*2;
+				};
+				
+				//展示分数
+				var right = document.getElementById("right");
+				function showScores () {
+					right.innerHTML = "<span>当前分数为:"+score+"</span>";
+				}
+				//向右
+				function conRight (className,ArrayData) {
+					
+					for (var i = 0;i < 3;i++) {
+						for (var j = 3; j > 0;j--) {
+							if (ArrayData[j] == 0) {
+								ArrayData[j] = ArrayData[j-1];
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-1] = 0;
+								className[j-1].children[0].innerHTML = ArrayData[j-1];
+							}
+							else if(ArrayData[j-1] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j] = ArrayData[j]*2;
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-1] = 0;
+								className[j-1].children[0].innerHTML = ArrayData[j-1];
+								i = 4;
+							}
+						}
+						for (var j = 7; j > 4;j--) {
+							if (ArrayData[j] == 0) {
+								ArrayData[j] = ArrayData[j-1];
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-1] = 0;
+								className[j-1].children[0].innerHTML = ArrayData[j-1];
+							}
+							else if(ArrayData[j-1] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j] = ArrayData[j]*2;
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-1] = 0;
+								className[j-1].children[0].innerHTML = ArrayData[j-1];
+								i = 4;
+							}
+						}
+						for (var j = 11; j > 8;j--) {
+							if (ArrayData[j] == 0) {
+								ArrayData[j] = ArrayData[j-1];
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-1] = 0;
+								className[j-1].children[0].innerHTML = ArrayData[j-1];
+							}
+							else if(ArrayData[j-1] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j] = ArrayData[j]*2;
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-1] = 0;
+								className[j-1].children[0].innerHTML = ArrayData[j-1];
+								i = 4;
+							}
+						}
+						for (var j = 15; j > 12;j--) {
+							if (ArrayData[j] == 0) {
+								ArrayData[j] = ArrayData[j-1];
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-1] = 0;
+								className[j-1].children[0].innerHTML = ArrayData[j-1];
+							}
+							else if(ArrayData[j-1] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j] = ArrayData[j]*2;
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-1] = 0;
+								className[j-1].children[0].innerHTML = ArrayData[j-1];
+								i = 4;
+							}
+						}
+					}
+				};
+				
+				//向左
+				function conLeft (className,ArrayData) {
+					
+					for (var i = 0;i < 3;i++) {
+						for (var j = 0; j < 3;j++) {
+							if (ArrayData[j] == 0) {
+								ArrayData[j] = ArrayData[j+1];
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j+1] = 0;
+								className[j+1].children[0].innerHTML = ArrayData[j+1];
+							}
+							else if(ArrayData[j+1] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j] = ArrayData[j+1]*2;
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j+1] = 0;
+								className[j+1].children[0].innerHTML = ArrayData[j+1];
+								i = 4;
+							}
+						}
+						for (var j = 4; j < 7;j++) {
+							if (ArrayData[j] == 0) {
+								ArrayData[j] = ArrayData[j+1];
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j+1] = 0;
+								className[j+1].children[0].innerHTML = ArrayData[j+1];
+							}
+							else if(ArrayData[j+1] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j] = ArrayData[j+1]*2;
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j+1] = 0;
+								className[j+1].children[0].innerHTML = ArrayData[j+1];
+								i = 4;
+							}
+						}
+						for (var j = 8; j < 11;j++) {
+							if (ArrayData[j] == 0) {
+								ArrayData[j] = ArrayData[j+1];
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j+1] = 0;
+								className[j+1].children[0].innerHTML = ArrayData[j+1];
+							}
+							else if(ArrayData[j+1] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j] = ArrayData[j+1]*2;
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j+1] = 0;
+								className[j+1].children[0].innerHTML = ArrayData[j+1];
+								i = 4;
+							}
+						}
+						for (var j = 12; j < 15;j++) {
+							if (ArrayData[j] == 0) {
+								ArrayData[j] = ArrayData[j+1];
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j+1] = 0;
+								className[j+1].children[0].innerHTML = ArrayData[j+1];
+							}
+							else if(ArrayData[j+1] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j] = ArrayData[j+1]*2;
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j+1] = 0;
+								className[j+1].children[0].innerHTML = ArrayData[j+1];
+								i = 4;
+							}
+						}
+					}
+				};
+				
+				//向下
+				function conBottom (className,ArrayData) {
+					for (var i = 0;i <= 3;i++) {
+						for (var j = 15; j >= 12;j--) {
+							if (ArrayData[j] == 0) {
+								ArrayData[j] = ArrayData[j-4];
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-4] = 0;
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+							}
+							else if(ArrayData[j-4] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j] = ArrayData[j]*2;
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-4] = 0;
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+								i = 4;
+							}
+						}
+						for (var j = 11; j >= 8;j--) {
+							if (ArrayData[j] == 0) {
+								ArrayData[j] = ArrayData[j-4];
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-4] = 0;
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+							}
+							else if(ArrayData[j-4] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j] = ArrayData[j]*2;
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-4] = 0;
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+								i = 4;
+							}
+						}
+						for (var j = 7; j >= 4;j--) {
+							if (ArrayData[j] == 0) {
+								ArrayData[j] = ArrayData[j-4];
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-4] = 0;
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+							}
+							else if(ArrayData[j-4] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j] = ArrayData[j]*2;
+								className[j].children[0].innerHTML = ArrayData[j];
+								ArrayData[j-4] = 0;
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+								i = 4;
+							}
+						}
+					}
+				};
+				
+				//向上
+				function conTop (className,ArrayData) {
+					
+					for (var i = 0;i <= 3;i++) {
+						
+						for (var j = 0; j <= 3;j++) {
+							if (ArrayData[j-4] == 0) {
+								ArrayData[j-4] = ArrayData[j];
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+								ArrayData[j] = 0;
+								className[j].children[0].innerHTML = ArrayData[j];
+							}
+							else if(ArrayData[j-4] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j-4] = ArrayData[j]*2;
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+								ArrayData[j] = 0;
+								className[j].children[0].innerHTML = ArrayData[j];
+								i = 4;
+							}
+						}
+						for (var j = 4; j <= 7;j++) {
+							
+							if (ArrayData[j-4] == 0) {
+								
+								ArrayData[j-4] = ArrayData[j];
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+								ArrayData[j] = 0;
+								className[j].children[0].innerHTML = ArrayData[j];
+							}
+							else if(ArrayData[j-4] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j-4] = ArrayData[j]*2;
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+								ArrayData[j] = 0;
+								className[j].children[0].innerHTML = ArrayData[j];
+								i = 4;
+							}
+						}
+						for (var j = 8; j <= 11;j++) {
+							
+							if (ArrayData[j-4] == 0) {
+								ArrayData[j-4] = ArrayData[j];
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+								ArrayData[j] = 0;
+								className[j].children[0].innerHTML = ArrayData[j];
+							}
+							else if(ArrayData[j-4] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j-4] = ArrayData[j]*2;
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+								ArrayData[j] = 0;
+								className[j].children[0].innerHTML = ArrayData[j];
+								i = 4;
+							}
+						}
+						for (var j = 12; j <= 15;j++) {
+							
+							if (ArrayData[j-4] == 0) {
+								ArrayData[j-4] = ArrayData[j];
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+								ArrayData[j] = 0;
+								className[j].children[0].innerHTML = ArrayData[j];
+							}
+							else if(ArrayData[j-4] == ArrayData[j]){
+								getScores(boxData,j);
+								ArrayData[j-4] = ArrayData[j]*2;
+								className[j-4].children[0].innerHTML = ArrayData[j-4];
+								ArrayData[j] = 0;
+								className[j].children[0].innerHTML = ArrayData[j];
+								i = 4;
+							}
+						}
+					}
+				};
+				
+				//每次操作后随机出现新数字
+				function randomNew(className,ArrayData) {
+					while (1){
+						var random = Math.ceil(Math.random()*15);
+						if(ArrayData[random]==0){
+							ArrayData[random] = 2;
+							className[random].children[0].innerHTML = ArrayData[random];
+							break;
+						}
+					}
+					
+				};
+				
+
+				
+				var start = document.getElementById("start");
+				start.onclick = function  () {
+					start.onclick = null;
+					boxDataInit(box,boxData);
+					bgcolor(box,boxData);
+					//游戏控制
+					document.onkeydown = function (event) {
+						event = event || window.event;
+						//上38，右39，下40，左37
+						switch (event.keyCode){
+							case 38://向上
+							conTop(box,boxData);
+							randomNew(box,boxData);
+							bgcolor(box,boxData);
+							showScores ();
+							gameOver(box,boxData);
+								break;
+							case 39://向右
+							conRight(box,boxData);
+							randomNew(box,boxData);
+							bgcolor(box,boxData);
+							showScores ();
+							gameOver(box,boxData);
+								break;
+							case 40://向下
+							conBottom(box,boxData);
+							randomNew(box,boxData);
+							bgcolor(box,boxData);
+							showScores ();
+							gameOver(box,boxData);
+								break;
+							case 37://向左
+							conLeft(box,boxData);
+							randomNew(box,boxData);
+							bgcolor(box,boxData);
+							showScores ();
+							gameOver(box,boxData);
+								break;
+							default:
+								break;
+						}	
+					};
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<div id="main1">
+			<header> 2048 </header>
+			<section id="left">
+				<div id="start">开始游戏</div>
+				<div id="refresh" onclick="window.location.reload()">刷新</div>
+				<ul style="border: 1px solid blue;text-align: left;">
+					<li>游戏规则：</li>
+					<li>开始棋盘内随机出现两个数字 ,若棋盘内的数字出现位移或合并,视为有效移动 .</li>
+					<li>玩家选择的方向上若有相同的数字则合并，每次有效移动可以同时合并,但不可以连续合并.</li>
+					<li>合并所得的所有新生成数字相加即为该步的有效得分. </li>
+					<li>玩家选择的方向行或列前方有空格则出现位移 ,每有效移动一步,棋盘的空位(无数字处)随机出现一个数字.</li>
+					<li>棋盘被数字填满,无法进行有效移动,判负,游戏结束 .</li>
+					<li>棋盘上出现2048,判胜,游戏结束.</li>
+					<li></li>
+				</ul>
+			</section>
+			<div id="mainFace">
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+				<div class="box"> </div>
+			</div>
+			<section id="right">
+				<div id="score"></div>
+			</section>
+		</div>
+		
+	</body>
+</html>
