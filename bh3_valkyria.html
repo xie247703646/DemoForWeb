@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>角色介绍 -《崩坏3》-为世界上所有的美好而战</title>
+		<script src="jquery.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.nav{
+				background: url(img/section_1_bg.jpg) #00c3ff no-repeat;
+				background-position: top center;
+				color:white;
+  				height:auto;
+  				min-height:1000px;
+			}
+			.nav-btn {
+				background:  rgba(0,0,0,0.25);
+				display:inline-block;
+				width: 100px;
+				height: 50px;
+				border: 2px solid #00c3ff;
+				border-radius: 10px;
+				transform:skew(-10deg);
+				text-align: center;
+				font-size: 18px;
+				color: white;
+				margin: 0px 5px;
+				padding: 0 4px;
+				transition: 0.3s;
+			}
+			.nav-btn:hover{
+				border: 2px solid #ffc300;
+			}
+			.nav-btn p{
+				margin-top: 12px;
+			}
+			.head li{
+				float: left;
+			}
+			.head{
+				width: 50%;
+				min-width: 700px;
+				list-style: none;
+				position: fixed;
+				left:380px;	
+				top: 16px;
+				overflow: hidden;
+				z-index: 2;
+			}
+			.active{
+				background-color: #00c3ff;
+				display: inline-block;
+				width: 100px;
+				height: 50px;
+				border: 2px solid #00c3ff;
+				border-radius: 10px;
+				transform:skew(-10deg);
+				font-size: 18px;
+				text-align: center;
+				margin: 0px 5px;
+				transition: 0.3s;
+				color: #000000;
+				padding: 0 4px;
+				
+			}
+			.active:hover{
+				border: 2px solid #ffc300;
+			}
+			.active p{
+				margin-top: 12px;
+			}
+			/*#section1{
+				background-color: rgb(40,47,63);
+				width: 1000px;
+				height: auto;
+				border: 2px solid rgb(32,38,50);
+				margin: 0 auto;
+				position: relative;
+				top: -200px;
+				padding:1px 15px;
+			}*/
+			#ulHeader li{
+				width: 8%;
+				float: left;
+				font-size: 20px;
+				text-align: center;
+				color: white;
+				list-style: none;
+				cursor: pointer;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			.content-wrap div{
+				position: absolute;
+				top: 150px;
+				left: 33%;
+				color: white;
+			}
+			.content-wrap div h1{
+				font-size:60px;
+				opacity:1;
+			}
+			.content-wrap div h2{
+				font-size:medium;
+				opacity: 0.6;
+			}
+			.content-wrap div p{
+				font-size: 30px;
+			}
+			#section2{
+				width: 100%;
+				min-width: 1330px;
+				height: 1900px;
+				background-color: rgb(0,195,255);
+			}
+			#valkyria_card{
+				position: absolute;
+				left: 200px;
+				top: 500px;
+			}
+			#card_content li{
+				height:308px;
+				list-style: none;
+				border: 3px solid white;
+				border-radius: 16px;
+				margin:7px;
+				overflow: hidden;
+				background-color: white;
+				transition: 0.5s;
+				float: left;
+			}
+			#card_content li:hover{
+				transform: scale(1.1,1.1);
+			}
+			#card_content a{
+				text-decoration: none;
+			}
+			.card{
+				width:220px; 
+				height:272px;
+			}
+			.card_name{
+				margin-top: 8px;
+				color: black;
+				text-align: center;
+			}
+			#card_kiana_1{
+				background: url(img/kiana_c1.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_kiana_2{
+				background: url(img/kiana_c2.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_kiana_3{
+				background: url(img/kiana_c3.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_kiana_4{
+				background: url(img/kiana_c4.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_mei_1{
+				background: url(img/mei_c1.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_mei_2{
+				background: url(img/mei_c2.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_mei_3{
+				background: url(img/mei_c3.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_mei_4{
+				background: url(img/mei_c4.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_bronya_1{
+				background: url(img/bronya_c1.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_bronya_2{
+				background: url(img/bronya_c2.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_bronya_3{
+				background: url(img/bronya_c3.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_bronya_4{
+				background: url(img/bronya_c4.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_himeko_1{
+				background: url(img/himeko_c3.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_himeko_2{
+				background: url(img/himeko_c2.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_himeko_3{
+				background: url(img/himeko_c1.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_himeko_4{
+				background: url(img/himeko_c4.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_sakura_1{
+				background: url(img/Sakura_c1.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_sakura_2{
+				background: url(img/Sakura_c2.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_sakura_3{
+				background: url(img/Sakura_c3.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_theresa_1{
+				background: url(img/theresa_c1.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_theresa_2{
+				background: url(img/theresa_c2.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_theresa_3{
+				background: url(img/theresa_c3.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_theresa_4{
+				background: url(img/theresa_c4.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_theresa_5{
+				background: url(img/theresa_c5.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_fuka_1{
+				background: url(img/fuka_c1.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_fuka_2{
+				background: url(img/fuka_c2.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_fuka_3{
+				background: url(img/fuka_c4.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+			#card_fuka_4{
+				background: url(img/fuka_c3.jpg)no-repeat;
+				background-size: auto 100%;
+			}
+		</style>
+		<script>
+			$(document).ready(function function_name () {
+				$(".content-wrap").hide().fadeIn(5000);	
+				$("#card_content").hide().slideDown(5000);
+			})
+		</script>
+	</head>
+	<body>
+		<div class="nav">
+			<ul class="head">
+				<li>
+					<a href="bh3.html">
+					<span class="nav-btn"><p>首页</p></span>
+					</a>
+				</li>
+				<li>
+					<a href="bh3_news.html">
+						<span class="nav-btn"><p>作战资讯</p></span>
+					</a>
+				</li>
+				<li>
+					<a href="bh3_valkyria.html">
+						<span class="active"><p>角色介绍</p></span>
+					</a>
+				</li>
+				<li>
+					<a href="bh3_special.html">
+						<span class="nav-btn"><p>游戏特色</p></span>
+					</a>
+				</li>
+				<li>
+					<a href="conducting.html" target="_blank">
+						<span class="nav-btn"><p>壁纸下载</p></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="main">
+			<section id="section1">
+				<div class="content-wrap" style="text-align:center">
+	                <div style="height:300px;min-width: 500px;">
+		                 <h1>角色介绍</h1>
+		                 <h2>Role Introduction</h2>
+		                 <p>您将指挥各具特色的少女们进行战斗<br>
+		                                                      她们有的是擅长远距离战斗的枪手<br>
+		                                                      有的是身手敏捷的刺客<br>
+		                                                      也有操纵重型机甲的少女<br>
+		                  </p>
+	                </div>
+				</div>
+			</section>
+			<section id="section2">
+				<div id="valkyria_card">
+					<ul id="card_content">
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_kiana_1"></div>
+							<div class="card_name">女武神·游侠</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_kiana_2"></div>
+							<div class="card_name">领域装·白练</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_kiana_3"></div>
+							<div class="card_name">圣女祈祷</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_kiana_4"></div>
+							<div class="card_name">白骑士·月光</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_mei_1"></div>
+							<div class="card_name">女武神·强袭</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_mei_2"></div>
+							<div class="card_name">脉冲装·绯红</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_mei_3"></div>
+							<div class="card_name">影舞冲击</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_mei_4"></div>
+							<div class="card_name">雷电女王的鬼铠</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_bronya_1"></div>
+							<div class="card_name">女武神·战车</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_bronya_2"></div>
+							<div class="card_name">驱动装·山吹</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_bronya_3"></div>
+							<div class="card_name">雪地狙击</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_bronya_4"></div>
+							<div class="card_name">次元边界突破</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_himeko_1"></div>
+							<div class="card_name">战场疾风</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_himeko_2"></div>
+							<div class="card_name">融核装·深红</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_himeko_3"></div>
+							<div class="card_name">女武神·凯旋</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_himeko_4"></div>
+							<div class="card_name">血色玫瑰</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_sakura_1"></div>
+							<div class="card_name">逆神巫女</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_sakura_2"></div>
+							<div class="card_name">御神装·勿忘</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_sakura_3"></div>
+							<div class="card_name">真炎幸魂</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_theresa_1"></div>
+							<div class="card_name">女武神·誓约</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_theresa_2"></div>
+							<div class="card_name">处刑装·紫苑</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_theresa_3"></div>
+							<div class="card_name">樱火轮舞</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_theresa_4"></div>
+							<div class="card_name">神恩颂歌</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_theresa_5"></div>
+							<div class="card_name">月下初拥</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_fuka_1"></div>
+							<div class="card_name">女武神·迅羽</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_fuka_2"></div>
+							<div class="card_name">影骑士·月轮</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_fuka_3"></div>
+							<div class="card_name">炽翎</div>
+							</a>
+						</li>
+						<li>
+							<a href="conducting.html" target="_blank">
+							<div class="card" id="card_fuka_4"></div>
+							<div class="card_name">白夜执事</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</body>
+</html>
