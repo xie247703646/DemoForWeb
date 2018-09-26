@@ -9,6 +9,9 @@
 				margin: 0;
 				padding: 0;
 			}
+			body{
+				min-width: 1330px;
+			}
 			.nav{
 				width: 100%;
 				//height: 10%;
@@ -224,24 +227,26 @@
 				document.onscroll = function () {
 					var scroll = document.scrollTop || document.documentElement.scrollTop;
 					console.log(scroll);
-					if (scroll >= 500) {
-						$(".content_sec2").slideDown(2000);
-					}else{
-						$(".content_sec2").fadeOut(100);
-					}
-					
-					if (scroll >= 1400) {
-						showValkyria();
-						$(".content_sec3 p").fadeIn(4000);
-					}else{
-						hideValkyria();
-						$(".content_sec3 p").fadeOut(300);
-					}
-					
-					if (scroll >= 2500) {
-						$("#section4 div").fadeIn(5000);
-					} else{
-						$("#section4 div").fadeOut(200);
+					if (scroll) {
+						if (scroll >= 500) {
+							$(".content_sec2").slideDown(2000);
+						}else{
+							$(".content_sec2").fadeOut(100);
+						}
+						
+						if (scroll >= 1400) {
+							showValkyria();
+							$(".content_sec3 p").fadeIn(4000);
+						}else{
+							hideValkyria();
+							$(".content_sec3 p").fadeOut(300);
+						}
+						
+						if (scroll >= 2500) {
+							$("#section4 div").fadeIn(5000);
+						} else{
+							$("#section4 div").fadeOut(200);
+						}
 					}
 				};
 				
@@ -254,7 +259,6 @@
 					$("#game-3-chara-6").fadeOut(100);
 				};
 				
-				
 				function showValkyria () {
 						$("#game-3-chara-1").fadeIn(1000);
 						$("#game-3-chara-2").fadeIn(1500);
@@ -262,99 +266,98 @@
 						$("#game-3-chara-4").fadeIn(2500);
 						$("#game-3-chara-5").fadeIn(3000);
 						$("#game-3-chara-6").fadeIn(3500);
-						
 				};
 			};
 		</script>
 	</head>
 	<body>
 		<div>
-		<div class="nav">
-			<ul class="head">
-				<li>
-					<a href="bh3.html">
-					<span class="nav-btn"><p>首页</p></span>
-					</a>
-				</li>
-				<li>
-					<a href="bh3_news.html">
-						<span class="nav-btn"><p>作战资讯</p></span>
-					</a>
-				</li>
-				<li>
-					<a href="bh3_valkyria.html">
-						<span class="nav-btn"><p>角色介绍</p></span>
-					</a>
-				</li>
-				<li>
-					<a href="bh3_special.html">
-						<span class="active"><p>游戏特色</p></span>
-					</a>
-				</li>
-				<li>
-					<a href="conducting.html" target="_blank">
-						<span class="nav-btn"><p>壁纸下载</p></span>
-					</a>
-				</li>
-			</ul>
-			<div class="content_wrap">
-                <h1>为世界上<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有的美好而战</h1>
-                <p class="first">&nbsp;&nbsp;在被崩坏侵蚀的世界中</p>
-                <p>&nbsp;由勇敢的少女组成的女武神部队</p>
-                <p>为守护世界而展开了战斗</p>
-            </div>
-
-		</div>
-		<section id="section2">
-			<div class="content_sec2">
-				<br />
-				<br />
-				<br />
-                <h1 class="center">欢迎加入女武神</h1>
-                <p class="center first">在不远的未来,</p>
-                <p class="center">神秘的灾害<text class="keyword">「崩坏」</text>侵蚀了世界,</p>
-                <p class="center">被崩坏感染的人类变成了没有思维，</p>
-                <p class="center">只懂破坏的<text class="keyword">「死士」</text></p>
-                <p class="center"><br></p>
-                <p class="center">唯一可以抵抗崩坏的只有那些拥有抗体的少女和由她们组成的<text class="keyword">「女武神」</text>部队</p>
-                <p class="center">少女们穿起冰冷的机甲，</p>
-                <p class="center">拿起沉重的武器，</p>
-                <p class="center">为了<text class="keyword">守护这个曾经美好的世界</text></p>
-            </div>
-
-		</section>
-		<section id="section3">
-			<ul>
-                <li><div id="game-3-chara-1"></div></li>
-                <li><div id="game-3-chara-2"></div></li>
-                <li><div id="game-3-chara-3"></div></li>
-                <li><div id="game-3-chara-4"></div></li>
-                <li><div id="game-3-chara-5"></div></li>
-                <li><div id="game-3-chara-6"></div></li>
-            </ul>
-            <div class="content_sec3">
-                <h1 class="center">选择您的战士</h1>
-                <p class="center first">在游戏中，您将指挥各具特色的少女们进行战斗。</p>
-                <p class="center"><br></p>
-                <p class="center">她们有的是擅长远距离战斗的枪手，</p>
-                <p class="center">有的是身手敏捷的刺客，</p>
-                <p class="center">也有操纵重型机甲的少女。</p>
-                <a href="bh3_valkyria.html" style="text-decoration: none;">
-                <div class="button">
-                	<p>角色介绍</p>
-                	<p>VALKYRIA</p>
-                </div>
-                </a>
-            </div>
-		</section>
-		<section id="section4">
-			<div>
-				<p>
-					指挥官
-				</p>
-				<p>我们需要你的协助！</p>
+			<div class="nav">
+				<ul class="head">
+					<li>
+						<a href="bh3.html">
+						<span class="nav-btn"><p>首页</p></span>
+						</a>
+					</li>
+					<li>
+						<a href="bh3_news.html">
+							<span class="nav-btn"><p>作战资讯</p></span>
+						</a>
+					</li>
+					<li>
+						<a href="bh3_valkyria.html">
+							<span class="nav-btn"><p>角色介绍</p></span>
+						</a>
+					</li>
+					<li>
+						<a href="bh3_special.html">
+							<span class="active"><p>游戏特色</p></span>
+						</a>
+					</li>
+					<li>
+						<a href="bh3_wallpaper.html">
+							<span class="nav-btn"><p>壁纸下载</p></span>
+						</a>
+					</li>
+				</ul>
+				<div class="content_wrap">
+	                <h1>为世界上<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有的美好而战</h1>
+	                <p class="first">&nbsp;&nbsp;在被崩坏侵蚀的世界中</p>
+	                <p>&nbsp;由勇敢的少女组成的女武神部队</p>
+	                <p>为守护世界而展开了战斗</p>
+	            </div>
+	
 			</div>
-		</section>
-		</div>
+			<section id="section2">
+				<div class="content_sec2">
+					<br />
+					<br />
+					<br />
+	                <h1 class="center">欢迎加入女武神</h1>
+	                <p class="center first">在不远的未来,</p>
+	                <p class="center">神秘的灾害<text class="keyword">「崩坏」</text>侵蚀了世界,</p>
+	                <p class="center">被崩坏感染的人类变成了没有思维，</p>
+	                <p class="center">只懂破坏的<text class="keyword">「死士」</text></p>
+	                <p class="center"><br></p>
+	                <p class="center">唯一可以抵抗崩坏的只有那些拥有抗体的少女和由她们组成的<text class="keyword">「女武神」</text>部队</p>
+	                <p class="center">少女们穿起冰冷的机甲，</p>
+	                <p class="center">拿起沉重的武器，</p>
+	                <p class="center">为了<text class="keyword">守护这个曾经美好的世界</text></p>
+	            </div>
+	
+			</section>
+			<section id="section3">
+				<ul>
+	                <li><div id="game-3-chara-1"></div></li>
+	                <li><div id="game-3-chara-2"></div></li>
+	                <li><div id="game-3-chara-3"></div></li>
+	                <li><div id="game-3-chara-4"></div></li>
+	                <li><div id="game-3-chara-5"></div></li>
+	                <li><div id="game-3-chara-6"></div></li>
+	            </ul>
+	            <div class="content_sec3">
+	                <h1 class="center">选择您的战士</h1>
+	                <p class="center first">在游戏中，您将指挥各具特色的少女们进行战斗。</p>
+	                <p class="center"><br></p>
+	                <p class="center">她们有的是擅长远距离战斗的枪手，</p>
+	                <p class="center">有的是身手敏捷的刺客，</p>
+	                <p class="center">也有操纵重型机甲的少女。</p>
+	                <a href="bh3_valkyria.html" style="text-decoration: none;">
+	                <div class="button">
+	                	<p>角色介绍</p>
+	                	<p>VALKYRIA</p>
+	                </div>
+	                </a>
+	            </div>
+			</section>
+			<section id="section4">
+				<div>
+					<p>
+						指挥官
+					</p>
+					<p>我们需要你的协助！</p>
+				</div>
+			</section>
+		</div>	
 	</body>
 </html>
