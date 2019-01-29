@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				background-color: #00BFFF;
+			}
+			
+			.btn {
+				width: 98%;
+				height: 100px;
+				border: 5px solid blue;
+				border-radius: 20px;
+				text-align: center;
+				font-size: 60px;
+				margin-top: 10px;
+				margin-bottom: 10px;
+				cursor: pointer;
+			}
+		</style>
+		<script>
+			window.onload = function() {
+//				var btn1 = document.getElementById("btn1");
+//				var btn2 = document.getElementById("btn2");
+//				var btn3 = document.getElementById("btn3");
+//				var btn4 = document.getElementById("btn4");
+//				var btn5 = document.getElementById("btn5");
+//				var btn6 = document.getElementById("btn6");
+//				var btn7 = document.getElementById("btn7");
+//				var music1 = document.getElementById("music1");
+//				var music2 = document.getElementById("music2");
+				var main1 = document.getElementById("main1");
+				var main2 = document.getElementById("main2");
+				var c_btn = document.getElementsByClassName("btn");
+				var c_audio = document.getElementsByClassName("audio1");
+				var length = 22;
+				var i = 0;
+//				while (i<length){
+//					c_btn[i].onclick = function(){
+//						playSounds(c_audio[i]);
+//						stopOther(c_audio[0],length);
+//					}
+//					i++;
+//				}
+//				for (var i = 0;i < length;i++) {
+//					c_btn[i].onclick = function(){
+//						playSounds(c_audio[i]);
+//						stopOther(c_audio[0],length);
+//					}
+//				}
+
+
+				c_btn[0].onclick = function(){
+						playSounds(c_audio[0]);
+						stopOther(c_audio[0],length);
+				}
+				c_btn[1].onclick = function(){
+						playSounds(c_audio[1]);
+						stopOther(c_audio[1],length);
+				}
+				c_btn[2].onclick = function(){
+						playSounds(c_audio[2]);
+						stopOther(c_audio[2],length);
+				}
+				c_btn[3].onclick = function(){
+						playSounds(c_audio[3]);
+						stopOther(c_audio[3],length);
+				}
+				c_btn[4].onclick = function(){
+						playSounds(c_audio[4]);
+						stopOther(c_audio[4],length);
+				}
+				c_btn[5].onclick = function(){
+						playSounds(c_audio[5]);
+						stopOther(c_audio[5],length);
+				}
+				c_btn[6].onclick = function(){
+						playSounds(c_audio[6]);
+						stopOther(c_audio[6],length);
+				}
+				c_btn[7].onclick = function(){
+						playSounds(c_audio[7]);
+						stopOther(c_audio[7],length);
+				}
+				c_btn[8].onclick = function(){
+						playSounds(c_audio[8]);
+						stopOther(c_audio[8],length);
+				}
+				c_btn[9].onclick = function(){
+						playSounds(c_audio[9]);
+						stopOther(c_audio[9],length);
+				}
+				c_btn[10].onclick = function(){
+						playSounds(c_audio[10]);
+						stopOther(c_audio[10],length);
+				}
+				c_btn[11].onclick = function(){
+						playSounds(c_audio[11]);
+						stopOther(c_audio[11],length);
+				}
+				c_btn[12].onclick = function(){
+						playSounds(c_audio[12]);
+						stopOther(c_audio[12],length);
+				}
+				c_btn[13].onclick = function(){
+						playSounds(c_audio[13]);
+						stopOther(c_audio[13],length);
+				}
+				c_btn[14].onclick = function(){
+						playSounds(c_audio[14]);
+						stopOther(c_audio[14],length);
+				}
+				c_btn[15].onclick = function(){
+						playSounds(c_audio[15]);
+						stopOther(c_audio[15],length);
+				}
+				c_btn[16].onclick = function(){
+						playSounds(c_audio[16]);
+						stopOther(c_audio[16],length);
+				}
+				c_btn[17].onclick = function(){
+						playSounds(c_audio[17]);
+						stopOther(c_audio[17],length);
+				}
+				c_btn[18].onclick = function(){
+						playSounds(c_audio[18]);
+						stopOther(c_audio[18],length);
+				}
+				c_btn[19].onclick = function(){
+						playSounds(c_audio[19]);
+						stopOther(c_audio[19],length);
+				}
+				c_btn[20].onclick = function(){
+						playSounds(c_audio[20]);
+						stopOther(c_audio[20],length);
+				}
+				c_btn[21].onclick = function(){
+						playSounds(c_audio[21]);
+						stopOther(c_audio[21],length);
+				}
+//				btn1.onclick = function() {
+//					//playSounds_1();
+//					playSounds(music1);
+//					music2.pause();
+//				}
+//
+//				btn2.onclick = function() {
+//					//playSounds_2();
+//					playSounds(music2);
+//					music1.pause();
+//				}
+				
+				function stopOther (music,length1) {
+					for (var i = 0 ; i < length1; i++) {
+						if(c_audio[i] == music){
+							//alert("dd");
+						}else{
+							c_audio[i].pause();
+						}
+					}
+				}
+				
+				
+				function playSounds(music) {
+					music.currentTime = 0;
+					if(music !== null) {
+						//检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+						//alert(audio.paused);
+						if(music.paused) {
+							music.play();
+						} else {
+							music.pause();
+						}
+					}
+				}
+
+//				function playSounds_1() {
+//					music1.currentTime = 0;
+//					if(music1 != null) {
+//						//检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+//						//alert(audio.paused);
+//						if(music1.paused) {
+//							music1.play();
+//						} else {
+//							music1.pause();
+//						}
+//					}
+//				}
+//
+//				function playSounds_2() {
+//					music2.currentTime = 0;
+//					if(music2 != null) {
+//						//检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+//						//alert(audio.paused);
+//						if(music2.paused) {
+//							music2.play();
+//						} else {
+//							music2.pause();
+//						}
+//					}
+//				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="main1">
+			<audio src="sounds/大狼狗叫.mp3" controls="controls" class="audio1" id="music1" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/多只狗叫.mp3" controls="controls" class="audio1" id="music2" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/愤怒猫叫.mp3" controls="controls" class="audio1" id="music3" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/疯狂狗叫.mp3" controls="controls" class="audio1" id="music4" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/搞笑狗叫.mp3" controls="controls" class="audio1" id="music5" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/狗宝宝叫.mp3" controls="controls" class="audio1" id="music6" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/狗狗打架.mp3" controls="controls" class="audio1" id="music7" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/狗叫三声.mp3" controls="controls" class="audio1" id="music8" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/室内狗叫.mp3" controls="controls" class="audio1" id="music9" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/哈士奇叫.mp3" controls="controls" class="audio1" id="music10" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/大鲸鱼叫.mp3" controls="controls" class="audio1" id="music11" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/可怜猫叫.mp3" controls="controls" class="audio1" id="music12" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/小猎狗叫.mp3" controls="controls" class="audio1" id="music13" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/猎犬咆哮.mp3" controls="controls" class="audio1" id="music14" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/大恐龙叫.mp3" controls="controls" class="audio1" id="music15" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/普通猫叫.mp3" controls="controls" class="audio1" id="music16" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/小狗哭泣.mp3" controls="controls" class="audio1" id="music17" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/小狗鸣咽.mp3" controls="controls" class="audio1" id="music18" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/小狗咆哮.mp3" controls="controls" class="audio1" id="music19" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/小奶猫叫.mp3" controls="controls" class="audio1" id="music20" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/夜晚狗叫.mp3" controls="controls" class="audio1" id="music21" style="display: none;" loop="loop">
+			</audio>
+			<audio src="sounds/嘤嘤狗叫.mp3" controls="controls" class="audio1" id="music22" style="display: none;" loop="loop">
+			</audio>
+		</div>
+		<div id="main2">
+			<div class="btn" id="btn1">大狼狗叫</div>
+			<div class="btn" id="btn2">多只狗叫</div>
+			<div class="btn" id="btn3">愤怒猫叫</div>
+			<div class="btn" id="btn4">疯狂狗叫</div>
+			<div class="btn" id="btn5">搞笑狗叫</div>
+			<div class="btn" id="btn6">狗宝宝叫</div>
+			<div class="btn" id="btn7">狗狗打架</div>
+			<div class="btn" id="btn8">狗叫三声</div>
+			<div class="btn" id="btn9">室内狗叫</div>
+			<div class="btn" id="btn10">哈士奇叫</div>
+			<div class="btn" id="btn11">大鲸鱼叫</div>
+			<div class="btn" id="btn12">可怜猫叫</div>
+			<div class="btn" id="btn13">小猎狗叫</div>
+			<div class="btn" id="btn14">猎狗咆哮</div>
+			<div class="btn" id="btn15">大恐龙叫</div>
+			<div class="btn" id="btn16">普通猫叫</div>
+			<div class="btn" id="btn17">小狗哭泣</div>
+			<div class="btn" id="btn18">小狗呜咽</div>
+			<div class="btn" id="btn19">小狗咆哮</div>
+			<div class="btn" id="btn20">小奶猫叫</div>
+			<div class="btn" id="btn21">夜晚狗叫</div>
+			<div class="btn" id="btn22">嘤嘤狗叫</div>
+		</div>
+		<!--<button id="bf" onclick="rbf();">重新播放</button>-->
+		<script>
+			//			function rbf() {
+			//				var audio = document.getElementById('music1');
+			//				audio.currentTime = 0;
+			//			}
+		</script>
+	</body>
+
+</html>
